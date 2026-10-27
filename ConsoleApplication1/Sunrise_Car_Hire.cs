@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
-    class Vehicle
+  public abstract class  Vehicle
     {
         public string reg_no;
         public string make;
@@ -27,10 +27,7 @@ namespace ConsoleApplication1
             return dailyRentalRate;
         }
 
-        public virtual double calculateRentalCost(int days)
-        {
-            return GetDailyRate() * days;
-        }
+        public abstract double calculateRentalCost(int days);
 
     }
 
@@ -66,7 +63,7 @@ namespace ConsoleApplication1
 
        static string  rentalCost(int choice,string registration_no,string make,double rate,int days)
         {
-            double cost;
+            double cost=0;
 
             switch (choice)
             {
@@ -79,8 +76,7 @@ namespace ConsoleApplication1
                     cost = new_truck.calculateRentalCost(days);
                     break;
                 default:
-                    Vehicle new_vehicle = new Vehicle(registration_no, make, rate);
-                    cost = new_vehicle.calculateRentalCost(days);
+                    Console.WriteLine("Please enter the right choice");
                     break;
             }
           
@@ -132,7 +128,7 @@ namespace ConsoleApplication1
                     Console.WriteLine(totalCost);
                     
                 }
-                catch (FormatException ex)
+                catch (FormatException)
                 {
                     Console.WriteLine("Invalid input...Try again");
                 
