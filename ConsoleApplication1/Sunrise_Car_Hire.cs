@@ -91,14 +91,28 @@ namespace ConsoleApplication1
                     Console.WriteLine();
                     Console.WriteLine("1.Sedan\n2.Truck\n3.Other");
                     Console.WriteLine();
+                int vehicle_choice;
+                while (true)
+                {
                     Console.Write("Type vehicle type: ");
-                    int vehicle = Convert.ToInt32(Console.ReadLine());
+                    vehicle_choice = Convert.ToInt32(Console.ReadLine());
+                    if (vehicle_choice>=1 && vehicle_choice <= 3)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Choice must me 1,2 or 3...Try again");
+                    }
+                }
+                   
                     string reg_number;
 
                     Console.WriteLine();
-
+                   
                     while (true)
                     {
+       
                         Console.Write("Enter the registration number: ");
                         reg_number = Console.ReadLine();
 
@@ -122,7 +136,7 @@ namespace ConsoleApplication1
                     Console.Write("Vehicle rental days: ");
                     int days = Convert.ToInt32(Console.ReadLine());
 
-                    string totalCost = rentalCost(vehicle, reg_number, vehicle_make, rate, days);
+                    string totalCost = rentalCost(vehicle_choice, reg_number, vehicle_make, rate, days);
                     Console.WriteLine();
 
                     Console.WriteLine(totalCost);
